@@ -73,7 +73,7 @@ class StudentPage extends Component{
       		<option value="Java Networking">Java Networking</option>
       		<option value="Distributed System">Distributed System</option>
       		<option value="Artificial Intelligence">Artificial Intelligence</option>
-      		<option value="Operating System">Operating System Security</option>
+      		<option value="Operating System Security">Operating System Security</option>
     		</select>	
 
     		</div>		
