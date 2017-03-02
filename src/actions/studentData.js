@@ -1,6 +1,6 @@
-export function studentData(student){
+export function sendData(data){
 	return {
 		type:'SEND_DATA',
-		student:student
+		data:data
 	};
 }
