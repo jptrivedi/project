@@ -1,6 +1,6 @@
 import React, {Component,PropTypes} from 'react';
 import {connect} from 'react-redux';
-import studentData from '../../actions/studentData';
+import * as studentAction from '../../actions/studentAction';
 import {Form,Col,ControlLabel,} from 'react-bootstrap';
 
 
@@ -25,16 +25,17 @@ class StudentPage extends Component{
 
 	onSubmit(e){
 		e.preventDefault();
-		this.props.dispatch(studentData.sendData(this.state.student));
+		this.props.dispatch(studentAction.sendData(this.state.student));
 		
 	}
 
 	studentRow(student,id){
 		return 	(	<div>
-					<div key={id}>{student.studentId}</div>
-					<div key={id}>{student.firstName}</div>
-					<div key={id}>{student.lastName}</div>
-                    <div key={id}>{student.courses}</div>
+					<li>{student.studentId}</li>
+					<li>{student.firstName}</li>
+					<li>{student.lastName}</li>
+					<li key={id}>{student.courses}</li>
+					
 					</div>
 				);
 		}
@@ -42,6 +43,7 @@ class StudentPage extends Component{
 	render(){
 		
 		return(                                                                                                                                                                                                                                                                                                                
+			
 			<div>
 			<form onSubmit={this.onSubmit}>
 			
@@ -66,12 +68,12 @@ class StudentPage extends Component{
 
 			<div className="form-group">
 			<label className="control-label">Courses</label>
-			<select class="form-control"name="courses" onChange={this.onChange}value={this.state.courses} >
-      		<option>Algorithm Concept</option>
-      		<option>Java Networking</option>
-      		<option>Distributed System</option>
-      		<option>Artificial Intelligence</option>
-      		<option>Operating System Security</option>
+			<select className="form-control"name="courses" onChange={this.onChange}value={this.state.courses} >
+      		<option value="AlgorithmConcept">Algorithm Concept</option>
+      		<option value="Java Networking">Java Networking</option>
+      		<option value="Distributed System">Distributed System</option>
+      		<option value="Artificial Intelligence">Artificial Intelligence</option>
+      		<option value="Operating System">Operating System Security</option>
     		</select>	
 
     		</div>		
@@ -84,8 +86,8 @@ class StudentPage extends Component{
 
 
 		</form>
+	
 		</div>
-		
 		);
 	}
 }
@@ -97,4 +99,6 @@ function mapStateToProps(state,props){
 }
 
 export default connect(mapStateToProps)(StudentPage);
+
+
 
